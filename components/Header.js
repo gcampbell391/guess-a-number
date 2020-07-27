@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         color: 'white',
-        fontSize: 50,
-        paddingBottom: 20
+        fontSize: 36,
+        paddingBottom: 20,
+        fontFamily: 'monoton-regular'
     }
 })
 

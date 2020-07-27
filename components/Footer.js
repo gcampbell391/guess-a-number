@@ -5,7 +5,7 @@ import Colors from '../constants/colors'
 const Footer = () => {
     return (
         <View style={styles.footer}>
-            <Text>Copyright © Gene Campbell III 2020</Text>
+            <Text style={styles.footerText}>Copyright © Gene Campbell III 2020</Text>
         </View>
     )
 }
@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
         height: 30,
         alignItems: 'center',
         paddingTop: 5
+    },
+    footerText: {
+        fontFamily: 'share-tech-mono',
+        fontSize: 18
     }
 })
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, Text, StyleSheet, Button, Alert } from 'react-native'
+import { View, Text, StyleSheet, Button, Alert, ImageBackground } from 'react-native'
 import Card from '../components/Card'
 import Colors from '../constants/colors';
 
@@ -66,15 +66,17 @@ const GameScreen = (props) => {
 
     return (
         <View style={styles.screen}>
-            <Text style={styles.title}>Number of Guesses: {guessTotal}</Text>
-            <Card style={styles.card}>
-                <Text style={styles.description}>Computer's Guess</Text>
-                <Text style={styles.currentGuess}>{currentGuess}</Text>
-                <View style={styles.buttonContainer}>
-                    <Button title='Lower' color={Colors.primary} style={styles.button} onPress={() => nextGuessHandle('lower')} />
-                    <Button title='Higher' color={Colors.primary} style={styles.button} onPress={() => nextGuessHandle('higher')} />
-                </View>
-            </Card>
+            <ImageBackground source={require('../assets/images/numberBackground.png')} style={styles.backgroundImage}>
+                <Card style={styles.card}>
+                    <Text style={styles.title}>Num of Guesses: {guessTotal}</Text>
+                    <Text style={styles.description}>Computer's Guess</Text>
+                    <Text style={styles.currentGuess}>{currentGuess}</Text>
+                    <View style={styles.buttonContainer}>
+                        <Button title='Lower' color={Colors.primary} style={styles.button} onPress={() => nextGuessHandle('lower')} />
+                        <Button title='Higher' color={Colors.primary} style={styles.button} onPress={() => nextGuessHandle('higher')} />
+                    </View>
+                </Card>
+            </ImageBackground>
         </View>)
 }
 
@@ -100,19 +102,31 @@ const styles = StyleSheet.create({
         fontSize: 60,
         color: Colors.third,
         padding: 5,
-        marginVertical: 10
+        marginVertical: 10,
+        fontFamily: 'monoton-regular'
+
     },
     description: {
         color: Colors.secondary,
-        fontSize: 20
+        fontSize: 30,
+        fontFamily: 'covered-by-your-grace'
     },
     button: {
         width: 100
     },
     title: {
-        fontSize: 30,
-        marginVertical: 20,
-        color: Colors.fourth
+        fontSize: 35,
+        marginVertical: 5,
+        color: Colors.fourth,
+        fontFamily: 'covered-by-your-grace'
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 600,
+        height: 600,
     }
 })
 

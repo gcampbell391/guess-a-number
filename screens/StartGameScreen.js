@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
+import { View, StyleSheet, Text, Button, TouchableWithoutFeedback, Keyboard, ImageBackground } from 'react-native'
 import Card from '../components/Card'
 import Colors from '../constants/colors'
 import Input from '../components/Input'
@@ -22,29 +22,30 @@ const StartGameScreen = (props) => {
         //This callback will dismiss the keyboard if the user clicks on the screen outside of the keypad or input
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.screen}>
-                <Text style={styles.title}>Start A New Game</Text>
-                <Card style={styles.inputContainer}>
-                    <Text style={styles.description}>Select a Number</Text>
-                    <Input
-                        style={styles.input}
-                        blurOnSubmit
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        keyboardType='number-pad'
-                        maxLength={2}
-                        value={props.enteredValue}
-                        onChangeText={props.numberInputHandle}
-                    />
-                    <View style={styles.buttonContainer}>
-                        <View style={styles.confirmButton} >
-                            <Button title="Confirm" color={Colors.primary} onPress={props.confirmValues} />
+                <ImageBackground source={require('../assets/images/numberBackground.png')} style={styles.backgroundImage}>
+                    <Card style={styles.inputContainer}>
+                        <Text style={styles.description}>Select a Number</Text>
+                        <Input
+                            style={styles.input}
+                            blurOnSubmit
+                            autoCapitalize='none'
+                            autoCorrect={false}
+                            keyboardType='number-pad'
+                            maxLength={2}
+                            value={props.enteredValue}
+                            onChangeText={props.numberInputHandle}
+                        />
+                        <View style={styles.buttonContainer}>
+                            <View style={styles.confirmButton} >
+                                <Button title="Confirm" color={Colors.primary} onPress={props.confirmValues} />
+                            </View>
+                            <View style={styles.resetButton}>
+                                <Button title="Reset" color={Colors.third} onPress={props.resetValues} />
+                            </View>
                         </View>
-                        <View style={styles.resetButton}>
-                            <Button title="Reset" color={Colors.third} onPress={props.resetValues} />
-                        </View>
-                    </View>
-                </Card>
-                {confirmedOutput}
+                    </Card>
+                    {confirmedOutput}
+                </ImageBackground>
             </View>
         </TouchableWithoutFeedback>
     )
@@ -55,17 +56,18 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
         alignItems: 'center',
-        // backgroundColor: Colors.primary
     },
     title: {
-        fontSize: 30,
+        fontSize: 35,
         marginVertical: 20,
-        color: Colors.fourth
+        color: Colors.fourth,
+        fontFamily: 'covered-by-your-grace',
     },
     inputContainer: {
         width: 300,
         maxWidth: '80%',
-        alignItems: 'center',
+        alignItems: 'center'
+
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -92,15 +94,26 @@ const styles = StyleSheet.create({
     chosenNumber: {
         fontSize: 60,
         color: Colors.fourth,
-        padding: 5,
-        marginVertical: 10
+        padding: 1,
+        marginVertical: 5,
+        fontFamily: 'monoton-regular'
     },
     description: {
         color: Colors.secondary,
-        fontSize: 20
+        fontSize: 30,
+        fontFamily: 'covered-by-your-grace'
     },
     startGameButton: {
         width: 150
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 600,
+        height: 600,
+
     }
 })
 

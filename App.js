@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Keyboard, Alert } from 'react-native';
+import * as Font from 'expo-font'
+import { AppLoading } from 'expo'
+
 import Header from './components/Header.js';
 import Footer from './components/Footer'
 import StartGameScreen from './screens/StartGameScreen.js';
 import GameScreen from './screens/GameScreen'
 import GameOverScreen from './screens/GameOverScreen'
 
+
+const fetchFonts = () => {
+  return Font.loadAsync({
+    'monoton-regular': require('./assets/fonts/Monoton-Regular.ttf'),
+    'covered-by-your-grace': require('./assets/fonts/CoveredByYourGrace-Regular.ttf'),
+    'share-tech-mono': require('./assets/fonts/ShareTechMono-Regular.ttf')
+  })
+}
 
 export default function App() {
 
@@ -14,6 +25,16 @@ export default function App() {
   const [selectedNumber, setSelectedNumber] = useState()
   const [startGame, setStartGame] = useState(false)
   const [guessRounds, setGuessRounds] = useState(0)
+  const [dataLoaded, setDataLoaded] = useState(false)
+
+  if (!dataLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setDataLoaded(true)}
+        onError={(err) => console.log(err)}
+      />)
+  }
 
   //Handles the input text change
   const numberInputHandle = text => {
