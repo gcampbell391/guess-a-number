@@ -100,7 +100,7 @@ export default function App() {
       onGameOver={handleGameOver}
     />
   } else if (guessRounds > 0) {
-    content = <GameOverScreen guessRounds={guessRounds} handlePlayAgain={handlePlayAgain} />
+    content = <GameOverScreen guessRounds={guessRounds} handlePlayAgain={handlePlayAgain} selectedNumber={selectedNumber} />
   }
 
   return (

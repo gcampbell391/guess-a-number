@@ -6,17 +6,15 @@ import Colors from '../constants/colors'
 
 const GameOverScreen = (props) => {
 
-    let content = props.guessRounds <= 8 ? 'You Do Realize I\'m a Computer, Right?!' : 'Aww Geeez You Got Me!'
     return (
         <View style={styles.screen}>
             <ImageBackground source={require('../assets/images/numberBackground.png')} style={styles.backgroundImage}>
                 <Card style={styles.card}>
                     <Text style={styles.title}>Game Over</Text>
-                    <Text style={styles.description}>You outwitted the computer for..</Text>
-                    <Text style={styles.rounds}>{props.guessRounds}</Text>
-                    <Text style={styles.description}>Rounds</Text>
-                    <Text style={styles.description}>Computer's Response:</Text>
-                    <Text style={styles.computerResponse}>{content}</Text>
+                    <Text style={styles.description}>It took your phone</Text>
+                    <Text style={styles.guessRounds}>{props.guessRounds}</Text>
+                    <Text style={styles.description}>rounds to guess the number</Text>
+                    <Text style={styles.rounds}>{props.selectedNumber}</Text>
                     <Button title='Play Again' color={Colors.primary} onPress={props.handlePlayAgain} />
                 </Card>
             </ImageBackground>
@@ -27,11 +25,10 @@ const GameOverScreen = (props) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        padding: 10,
         alignItems: 'center'
     },
     card: {
-        marginVertical: 20,
+        marginVertical: 10,
         alignItems: 'center',
         width: 350
     },
@@ -44,15 +41,18 @@ const styles = StyleSheet.create({
     rounds: {
         fontSize: 60,
         color: Colors.fourth,
-        padding: 5,
-        marginVertical: 10,
+        fontFamily: 'monoton-regular'
+    },
+    guessRounds: {
+        fontSize: 60,
+        color: Colors.third,
         fontFamily: 'monoton-regular'
     },
     computerResponse: {
         color: Colors.third,
         fontSize: 22,
         textAlign: 'center',
-        marginVertical: 10,
+        marginVertical: 5,
         fontFamily: 'share-tech-mono'
     },
     title: {

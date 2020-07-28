@@ -1,5 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Button, TouchableWithoutFeedback, Keyboard, ImageBackground } from 'react-native'
+import { useSpring, animated } from 'react-spring'
+
 import Card from '../components/Card'
 import Colors from '../constants/colors'
 import Input from '../components/Input'
