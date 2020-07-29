@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, Text, StyleSheet, Alert, ImageBackground, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Alert, ImageBackground, ScrollView, Dimensions } from 'react-native'
 import Card from '../components/Card'
 import Colors from '../constants/colors';
 import { Ionicons } from '@expo/vector-icons'
@@ -96,7 +96,9 @@ const styles = StyleSheet.create({
     card: {
         marginVertical: 20,
         alignItems: 'center',
-        width: 300
+        width: Dimensions.get('window').width / 1.3,
+        borderColor: Colors.secondary,
+        borderWidth: 1,
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -123,7 +125,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.secondary,
         borderWidth: 2,
         backgroundColor: 'white',
-        width: 300,
+        width: Dimensions.get('window').width / 1.3,
         textAlign: 'center'
     },
     backgroundImage: {
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         marginVertical: 4,
         backgroundColor: 'white',
-        width: 300
+        width: Dimensions.get('window').width / 1.3
 
     }
 })

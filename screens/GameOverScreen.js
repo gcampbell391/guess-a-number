@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button, ImageBackground } from 'react-native'
+import { View, Text, StyleSheet, Button, ImageBackground, Dimensions } from 'react-native'
 import Card from '../components/Card'
 import Colors from '../constants/colors'
 
@@ -30,13 +30,16 @@ const styles = StyleSheet.create({
     card: {
         marginVertical: 10,
         alignItems: 'center',
-        width: 350
+        width: Dimensions.get('window').width / 1.3,
+        borderColor: Colors.secondary,
+        borderWidth: 1,
     },
     description: {
         color: Colors.secondary,
         fontSize: 25,
         paddingVertical: 3,
-        fontFamily: 'covered-by-your-grace'
+        fontFamily: 'covered-by-your-grace',
+        textAlign: "center"
     },
     rounds: {
         fontSize: 60,

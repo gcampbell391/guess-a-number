@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, Button, TouchableWithoutFeedback, Keyboard, ImageBackground } from 'react-native'
+import { View, StyleSheet, Text, Button, TouchableWithoutFeedback, Keyboard, ImageBackground, Dimensions, ScrollView } from 'react-native'
 import { useSpring, animated } from 'react-spring'
 
 import Card from '../components/Card'
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: 'row',
-        width: '100%',
+        width: Dimensions.get('window').width * .7,
         justifyContent: 'space-between',
         paddingHorizontal: 15,
         paddingVertical: 10
@@ -82,7 +82,11 @@ const styles = StyleSheet.create({
         width: 100
     },
     confirmButton: {
-        width: 100
+        // uses Dimensions API to determine screen size of device
+        // width: '40%' is similar to below..but percentage pertains 
+        // to parent container..Dimensions.get('window') uses the width
+        // of the device
+        width: Dimensions.get('window').width / 4
     },
     input: {
         width: 50,
